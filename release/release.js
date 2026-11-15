@@ -263,8 +263,9 @@ function copyLocalInputs(c, exportDir) {
 function buildOne(c, exportDir) {
     // A private TMPDIR: app harnesses keep scratch files there by uid, which
     // concurrent builds and harness runs would otherwise share. Short, as
-    // harnesses put Unix sockets in it (104 bytes on macOS).
-    const tmp = fs.mkdtempSync('/tmp/mgu-rel-');
+    // harnesses put Unix sockets in it (104 bytes on macOS); Windows has no
+    // /tmp, so it takes the system one.
+    const tmp = fs.mkdtempSync(path.join(process.platform === 'win32' ? os.tmpdir() : '/tmp', 'mgu-rel-'));
     const env = Object.assign({}, process.env, { SOURCE_DATE_EPOCH: sourceEpoch(c), TMPDIR: tmp });
     try {
         return buildIn(c, exportDir, env);
