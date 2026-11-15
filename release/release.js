@@ -71,7 +71,7 @@ function appTitle(stagedDir) {
  * prefix. A repository's release/repo.json, when it has one, lists
  * "unprefixedAppIds" that predate the rule and "historicalNotes", path
  * prefixes whose files keep the versions they name. */
-const APP_ID_PREFIX = 'vizualyse_';
+const APP_ID_PREFIX = 'vicecluster_';
 const REPO_RULES = fs.existsSync(path.join(__dirname, 'repo.json')) ? readJson(path.join(__dirname, 'repo.json')) : {};
 const UNPREFIXED_APP_IDS = REPO_RULES.unprefixedAppIds || [];
 

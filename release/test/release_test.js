@@ -11,8 +11,8 @@
  * `uninstallable` to the catalog, as mgu-store's `deploy/hu artifact`; a malformed
  * `requires` or `mguHmi` is refused; the build tree takes each submodule at
  * the commit HEAD records, and refuses one its checkout lacks; and this
- * repository's chain is declared: the Cluster themes app (for iDrive 7)
- * requires vizualyse-cluster, which requires the deploy tool, cluster-render,
+ * repository's chain is declared: the ViceCluster app (for iDrive 7)
+ * requires vicecluster, which requires the deploy tool, cluster-render,
  * mgu-python and mgu-render and carries its own systemd unit; both are
  * removable.
  *
@@ -146,31 +146,65 @@ test('the build tree holds a submodule at its recorded commit; one its checkout 
     assert.throws(() => exportHead(main), /git archive 1{40} in third_party[\\/]lib failed/);
 });
 
-test('the Cluster themes chain: app -> vizualyse-cluster -> the deploy tool, cluster-render, mgu-python and mgu-render', () => {
+test('the ViceCluster chain: app -> vicecluster -> the deploy tool, cluster-render, mgu-python and mgu-render', () => {
     const all = components();
     const byId = (id) => all.find((c) => c.id === id);
-    const app = byId('vizualyse_cluster');
-    const tool = byId('vizualyse-cluster');
+    const app = byId('vicecluster_app');
+    const tool = byId('vicecluster');
     assert.ok(app && tool, 'both are releasable');
     assert.deepStrictEqual(app.mguHmi, ['ID7']);
-    assert.deepStrictEqual(Object.keys(app.requires), ['vizualyse-cluster']);
-    assert.ok(catalog.compareVersions(tool.version, app.requires['vizualyse-cluster']) >= 0,
+    assert.deepStrictEqual(Object.keys(app.requires), ['vicecluster']);
+    assert.ok(catalog.compareVersions(tool.version, app.requires['vicecluster']) >= 0,
         'the tool meets the app\'s requirement');
     assert.deepStrictEqual(Object.keys(tool.requires), ['mgu-deploy', 'mgu-python', 'mgu-render', 'cluster-render'],
         'the deploy tool installs first');
     assert.deepStrictEqual(tool.mguHmi, ['ID7']);
-    const c = JSON.parse(fs.readFileSync(path.join(__dirname, '..', '..', 'native', 'vizualyse-cluster', 'component.json'), 'utf8'));
+    const c = JSON.parse(fs.readFileSync(path.join(__dirname, '..', '..', 'native', 'vicecluster', 'component.json'), 'utf8'));
     // the tool brings its own unit and is restarted with it
-    assert.deepStrictEqual(c.units, [{ name: 'vizualyse-cluster.service', from: 'systemd/vizualyse-cluster.service' }]);
-    assert.deepStrictEqual(c.enable, [{ unit: 'vizualyse-cluster.service', target: 'multi-user.target' }]);
-    assert.deepStrictEqual(c.recmgr, ['vizualyse-cluster']);
-    assert.deepStrictEqual(c.restart, ['vizualyse-cluster.service']);
+    assert.deepStrictEqual(c.units, [{ name: 'vicecluster.service', from: 'systemd/vicecluster.service' }]);
+    assert.deepStrictEqual(c.enable, [{ unit: 'vicecluster.service', target: 'multi-user.target' }]);
+    assert.deepStrictEqual(c.recmgr, ['vicecluster']);
+    assert.deepStrictEqual(c.restart, ['vicecluster.service']);
     // the built theme art and strip and picker previews ship
     assert.ok(c.files.some((f) => f.path === 'vice1.theme.json'), 'the built theme ships');
     assert.ok(c.files.some((f) => f.path === 'vice1.art.tiles.gz'), 'the built strip ships');
     assert.ok(c.files.some((f) => f.path === 'picker.vice1.png'), 'the picker previews ship');
     assert.strictEqual(app.uninstallable, true);
     assert.strictEqual(tool.uninstallable, true);
+});
+
+test('ViceCluster has its own app UUIDs, service, settings and control socket', () => {
+    const root = path.join(__dirname, '..', '..');
+    const read = (rel) => fs.readFileSync(path.join(root, rel), 'utf8');
+    const app = components().find((c) => c.id === 'vicecluster_app');
+    const tool = components().find((c) => c.id === 'vicecluster');
+    assert.strictEqual(app.requires.vicecluster, tool.version);
+    const ui = JSON.parse(read(`${app.dir}/vicecluster_app@${app.version}/rhmiData/application.json`)).application;
+    assert.strictEqual(ui.name, app.id);
+    assert.strictEqual(ui.entryPoints[0].name, app.id);
+    const oldUuids = [
+        '4047513b-98fe-4899-8e0b-cb7e8b3cf853', '61297206-61a7-4813-b020-1d137d41c971',
+        'd0ec791d-6cd2-42b6-a90a-20616382eb2e', 'f58c67de-d564-4648-9efc-e5084f023b9c'
+    ];
+    const uuids = [ui.uuid, ui.stringBundleUuid, ui.resourceBundleUuid, ui.entryPoints[0].uuid];
+    assert.strictEqual(new Set(uuids).size, uuids.length);
+    uuids.forEach((uuid) => {
+        assert(/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/.test(uuid));
+        assert(!oldUuids.includes(uuid), 'no global UUID shared with the original app');
+    });
+    const server = read('native/vicecluster/src/server.js');
+    assert(server.includes("'/var/opt/vicecluster/state'"));
+    assert(server.includes("enabled: false"), 'a fresh install does not activate another theme');
+    assert(server.includes("new ClusterRender('vicecluster'"));
+    assert(server.includes("app: 'vicecluster_app'"), 'control permissions belong to our app');
+    ['native/vicecluster/src/control.js', 'apps/vicecluster_app/src/cluster_control.js'].forEach((rel) => {
+        assert(read(rel).includes("'/dev/shm/vicecluster/ctl.sock'"));
+        assert(!/vizualyse[-_]cluster/.test(read(rel)));
+    });
+    assert(read('native/vicecluster/src/picker.js').includes("const NAME = 'vicecluster_app'"));
+    const unit = read('native/vicecluster/systemd/vicecluster.service');
+    assert(unit.includes('/var/opt/vicecluster/current/server.js'));
+    assert(!unit.includes('vizualyse-cluster.service'), 'no automatic stop of the original tool');
 });
 
 let failed = 0;

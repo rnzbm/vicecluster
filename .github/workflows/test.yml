@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Copyright (C) 2026 Yousaf Khan
 # Tests on every push to main and every pull request: the platform (its pins
-# and its frozen versions), the Cluster themes tool (the shader rules, every
+# and its frozen versions), the ViceCluster tool (the shader rules, every
 # theme's logic, the tool against a fake cluster-render, the picker, the
 # touch reader), the release tooling, every shipped script parsing on Node 8
 # (the head unit's), and two clean builds of each component compared byte for
@@ -41,25 +41,27 @@ jobs:
         run: |
           node platform/platform.js check ${BASE:+--base "$BASE"}
           node platform/platform.js sync
-      - name: Cluster themes (shader rules; every theme on Node 8; the tool against a fake cluster-render on Node 8; the picker on Node 8; the touch reader on mgu-python's Python, as root)
+      - name: ViceCluster (shader rules; every theme on Node 8; the tool against a fake cluster-render on Node 8; the picker on Node 8; the touch reader on mgu-python's Python, as root)
         run: |
-          node native/vizualyse-cluster/test/shader_lint.js
-          docker run --rm -v "$PWD:/repo:ro" -w /repo node:8.16.2-alpine node native/vizualyse-cluster/test/themes_test.js
-          docker run --rm -v "$PWD:/repo:ro" -w /repo node:8.16.2-alpine node native/vizualyse-cluster/test/switch_test.js
-          docker run --rm -v "$PWD:/repo" -w /repo node:8.16.2-alpine node native/vizualyse-cluster/test/tool_test.js
-          docker run --rm -v "$PWD:/repo" -w /repo node:8.16.2-alpine node native/vizualyse-cluster/test/picker_test.js
-          docker run --rm -v "$PWD:/r:ro" -w /r python:3.12-slim python3 native/vizualyse-cluster/test/touch_reader_test.py
-      - name: Cluster themes, the GTA VI Bucharest theme (its smoke, its motion, the wanted panel)
+          node native/vicecluster/test/shader_lint.js
+          docker run --rm -v "$PWD:/repo:ro" -w /repo node:8.16.2-alpine node native/vicecluster/test/themes_test.js
+          docker run --rm -v "$PWD:/repo:ro" -w /repo node:8.16.2-alpine node native/vicecluster/test/switch_test.js
+          docker run --rm -v "$PWD:/repo" -w /repo node:8.16.2-alpine node native/vicecluster/test/tool_test.js
+          docker run --rm -v "$PWD:/repo" -w /repo node:8.16.2-alpine node native/vicecluster/test/picker_test.js
+          docker run --rm -v "$PWD:/r:ro" -w /r python:3.12-slim python3 native/vicecluster/test/touch_reader_test.py
+      - name: ViceCluster, the GTA VI Bucharest theme (its smoke, its motion, the wanted panel)
         run: |
-          node native/vizualyse-cluster/test/vice1_smoke_test.js
-          node native/vizualyse-cluster/test/vice1_motion_test.js
-          node native/vizualyse-cluster/test/vice1_wanted_test.js
+          node native/vicecluster/test/vice1_smoke_test.js
+          node native/vicecluster/test/vice1_motion_test.js
+          node native/vicecluster/test/vice1_wanted_test.js
       - name: Release tooling
         run: node release/test/release_test.js
+      - name: ViceCluster app page on Node 8
+        run: docker run --rm -v "$PWD:/repo" -w /repo/apps/vicecluster_app node:8.16.2-alpine node tools/test_page.js --platform-synced
       - name: Node 8 syntax (the head unit's)
         run: |
           docker run --rm -v "$PWD:/repo:ro" -w /repo node:8.16.2-alpine sh -c '
-            for f in native/vizualyse-cluster/src/*.js native/vizualyse-cluster/test/*.js native/vizualyse-cluster/themes/built/*.logic.js apps/vizualyse_cluster/src/*.js platform/tool/cluster_render_client/*/*.js platform/app/vehicle_speed/*/*.js; do node -c "$f" || exit 1; done'
+            for f in native/vicecluster/src/*.js native/vicecluster/test/*.js native/vicecluster/themes/built/*.logic.js apps/vicecluster_app/src/*.js platform/tool/cluster_render_client/*/*.js platform/app/vehicle_speed/*/*.js; do node -c "$f" || exit 1; done'
 
   # every component, as the build matrix's list
   plan:

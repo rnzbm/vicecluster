@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "1.3.0",
+  "application": {
+    "uuid": "4d628263-ac34-452e-a3e4-7d46999deffe",
+    "type": "OnlineApp",
+    "name": "vicecluster_app",
+    "vendor": "Yousaf Khan",
+    "version": "0.2.1",
+    "defaultLanguage": "en_GB",
+    "uiDescriptions": [
+      {
+        "applicationFilePath": "./uiDescriptions/ID7/application.xml",
+        "uiDescriptionFilePath": "./uiDescriptions/ID7/uiDescription.json",
+        "hmi": [
+          "ID7"
+        ]
+      }
+    ],
+    "stringBundleUuid": "31203601-e2bc-478e-aa3d-a5f9b5b8eccb",
+    "resourceBundleUuid": "b5e1dae2-365c-4b10-87d4-03f3f499d674",
+    "variantGroups": [
+      {
+        "stringsPath": "./variantGroups/Common/texts",
+        "resourcesPath": "./variantGroups/Common/images",
+        "hmi": [
+          "ID7"
+        ],
+        "brands": [
+          "BMW"
+        ]
+      }
+    ],
+    "entryPoints": [
+      {
+        "name": "vicecluster_app",
+        "uuid": "2126f24d-38ea-46a7-8b3a-4f8c506e2315",
+        "textId": "SID_CLUSTER_TITLE",
+        "icon": "vicecluster_app_icon.png",
+        "insertionStateId": 20974,
+        "insertionFocusId": 2,
+        "insertionMode": "INSERT_BELOW",
+        "insertionOrder": 1,
+        "insertionPriority": 0,
+        "previewType": "NONE",
+        "bookmarkable": true,
+        "private": null,
+        "appearance": "DEFAULT",
+        "isGroupHeader": false,
+        "insertionGroup": 0
+      }
+    ]
+  }
+}
