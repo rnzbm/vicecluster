@@ -1,0 +1,12 @@
+node_modules/
+.DS_Store
+__pycache__/
+
+# builds: native/*/build/, the app's source package, release.js output
+native/*/build/
+*.tgz
+release/out/
+release/published/
+
+# screenshots of tools/preview_shot.js (scratch; it takes the path)
+*-shot.png

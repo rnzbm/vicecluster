@@ -1,0 +1,1735 @@
+{
+ "id": "vice1",
+ "title": "GTA VI Bucharest",
+ "family": "vice1",
+ "mode": "sport",
+ "version": 2,
+ "ship": true,
+ "bottom": 720,
+ "art": "art.html",
+ "signals": [
+  "kmh",
+  "rpm",
+  "throttle",
+  "engineHp",
+  "boostBar",
+  "fuelPct",
+  "oilC",
+  "coolantC",
+  "gLat",
+  "gLon",
+  "gearMode",
+  "gear",
+  "rangeKm",
+  "clock",
+  "outsideC",
+  "odoKm",
+  "brake"
+ ],
+ "params": {
+  "maxKmh": 300,
+  "maxRpm": 7000,
+  "shiftFrom": 4600,
+  "shiftAt": 6000,
+  "upCue": 5600,
+  "nA": 0.020958,
+  "nB": 0.958084,
+  "boostMax": 1.5,
+  "engMaxHp": 390,
+  "gMax": 1.2,
+  "gR": 36,
+  "wheelAnimation": {
+   "frames": 8,
+   "cyclesPerKmh": 0.02,
+   "maxCycles": 1.8
+  },
+  "launchSmoke": {
+   "throttleMin": 0.7,
+   "maxKmh": 45,
+   "minRpm": 1200,
+   "burstSeconds": 1.5,
+   "attackSeconds": 0.12,
+   "fadeSeconds": 0.45
+  },
+  "wantedKmh": [
+   50,
+   90,
+   130,
+   170,
+   210
+  ],
+  "oilRed": 132,
+  "coolRed": 106,
+  "power": {
+   "w": 320,
+   "h": 8
+  },
+  "text": {
+   "gearText": {
+    "x": 1280,
+    "w": 260,
+    "font": "f112w600"
+   },
+   "val160": {
+    "x": 484,
+    "w": 914,
+    "font": "f44w600"
+   },
+   "val156": {
+    "x": 820,
+    "w": 290,
+    "font": "f44w600"
+   },
+   "fluids": {
+    "x": 519,
+    "w": 916,
+    "font": "f24w600"
+   },
+   "ranges": {
+    "x": 564,
+    "w": 130,
+    "font": "f22w500"
+   }
+  },
+  "at": {
+   "boost": 488,
+   "gEnd": 1341.67,
+   "engEnd": 988.27,
+   "gearM": 1391.97,
+   "gearMid": 1400,
+   "fuelEnd": 579.73,
+   "oilEnd": 1408.32,
+   "coolEnd": 1284.32,
+   "rangeFuel": 566.62
+  },
+  "design": {
+   "safeTop": 8
+  }
+ },
+ "fonts": {
+  "f112w600": {
+   "file": "../lci1/fonts/Archivo-wdth108.woff2",
+   "weight": 600,
+   "size": 112,
+   "cell": [
+    89,
+    85
+   ],
+   "dy": 1.5,
+   "glyphs": "0123456789 -DNPRS",
+   "tracking": -2.24
+  },
+  "f44w600": {
+   "file": "../lci1/fonts/Archivo-wdth108.woff2",
+   "weight": 600,
+   "size": 44,
+   "cell": [
+    30,
+    36
+   ],
+   "dy": 0,
+   "glyphs": "0123456789 -.−"
+  },
+  "f40w500": {
+   "file": "assets/wanted-stars.ttf",
+   "weight": 500,
+   "size": 40,
+   "cell": [
+    73,
+    82
+   ],
+   "dy": 0,
+   "glyphs": " -*ABCDEFGHabcdefghijkl"
+  },
+  "f18w600": {
+   "file": "../lci1/fonts/Archivo.woff2",
+   "weight": 600,
+   "size": 18,
+   "cell": [
+    17,
+    18
+   ],
+   "dy": 0,
+   "glyphs": "0123456789 -EFILNOV",
+   "tracking": 1.44
+  },
+  "f24w600": {
+   "file": "../lci1/fonts/Archivo-wdth108.woff2",
+   "weight": 600,
+   "size": 24,
+   "cell": [
+    16,
+    22
+   ],
+   "dy": 0,
+   "glyphs": "0123456789 -"
+  },
+  "f22w500": {
+   "file": "../lci1/fonts/Archivo.woff2",
+   "weight": 500,
+   "size": 22,
+   "cell": [
+    20,
+    21
+   ],
+   "dy": 0.5,
+   "glyphs": "0123456789 -km"
+  },
+  "f40w500x": {
+   "file": "../lci1/fonts/Archivo-wdth108.woff2",
+   "weight": 500,
+   "size": 40,
+   "cell": [
+    39,
+    34
+   ],
+   "dy": 1,
+   "glyphs": "0123456789 -+.:Ckm°−"
+  }
+ },
+ "paths": {
+  "speedNum": {
+   "path": [
+    [
+     "M",
+     360.59,
+     630
+    ],
+    [
+     "L",
+     170.22,
+     319.85
+    ],
+    [
+     "L",
+     170.22,
+     318.15
+    ],
+    [
+     "L",
+     360.59,
+     8
+    ]
+   ],
+   "inward": -1,
+   "rect": [
+    157,
+    0,
+    273,
+    638
+   ],
+   "maxd": 79
+  },
+  "tachNum": {
+   "mirror": "speedNum"
+  },
+  "speedTint": {
+   "copy": "speedNum",
+   "at": [
+    284,
+    0
+   ]
+  },
+  "speedBand": {
+   "copy": "speedNum",
+   "at": [
+    264,
+    0
+   ]
+  },
+  "tachTint": {
+   "copy": "speedNum",
+   "flip": true,
+   "at": [
+    1363,
+    0
+   ]
+  },
+  "tachBand": {
+   "copy": "speedNum",
+   "flip": true,
+   "at": [
+    1383,
+    0
+   ]
+  },
+  "gearOutline": {
+   "path": [
+    [
+     "M",
+     1467.04,
+     310.53
+    ],
+    [
+     "L",
+     1490.72,
+     283.46
+    ],
+    [
+     "L",
+     1492.04,
+     282.04
+    ],
+    [
+     "L",
+     1505.2,
+     297.08
+    ],
+    [
+     "L",
+     1505.35,
+     298.42
+    ],
+    [
+     "L",
+     1478.45,
+     315.71
+    ],
+    [
+     "L",
+     1478.96,
+     314.9
+    ],
+    [
+     "L",
+     1490.8,
+     301.37
+    ],
+    [
+     "L",
+     1492.12,
+     300.14
+    ],
+    [
+     "L",
+     1505.28,
+     315.17
+    ],
+    [
+     "L",
+     1506.9,
+     316.03
+    ],
+    [
+     "L",
+     1560.82,
+     317.96
+    ],
+    [
+     "L",
+     1561.58,
+     317.3
+    ],
+    [
+     "L",
+     1522.22,
+     252.37
+    ],
+    [
+     "L",
+     1520.43,
+     252
+    ],
+    [
+     "L",
+     1314.62,
+     252
+    ],
+    [
+     "L",
+     1313.03,
+     252.97
+    ],
+    [
+     "L",
+     1300.31,
+     265.69
+    ],
+    [
+     "L",
+     1300,
+     267.56
+    ],
+    [
+     "L",
+     1300,
+     383.45
+    ],
+    [
+     "L",
+     1301.45,
+     384
+    ],
+    [
+     "L",
+     1521.25,
+     384
+    ],
+    [
+     "L",
+     1522.65,
+     382.94
+    ],
+    [
+     "L",
+     1562,
+     318
+    ]
+   ],
+   "inward": 1,
+   "rect": [
+    1295,
+    247,
+    272,
+    142
+   ],
+   "maxd": 3
+  },
+  "chevrons": {
+   "copy": "gearOutline",
+   "at": [
+    1295,
+    247
+   ]
+  },
+  "fuelBar": {
+   "path": [
+    [
+     "M",
+     594.72,
+     596
+    ],
+    [
+     "L",
+     487.92,
+     422
+    ]
+   ],
+   "inward": -1,
+   "rect": [
+    481,
+    417,
+    121,
+    184
+   ],
+   "maxd": 6
+  },
+  "oilBar": {
+   "copy": "fuelBar",
+   "flip": true,
+   "at": [
+    1380,
+    417
+   ]
+  },
+  "coolBar": {
+   "copy": "fuelBar",
+   "flip": true,
+   "at": [
+    1256,
+    417
+   ]
+  }
+ },
+ "layers": [
+  {
+   "name": "speedNum",
+   "shader": "gauge",
+   "field": "speedNum",
+   "uniforms": {
+    "u_val": [
+     0,
+     0,
+     2,
+     0
+    ],
+    "u_band": [
+     0,
+     0,
+     -10,
+     78
+    ],
+    "u_shape": [
+     58,
+     0,
+     0,
+     1
+    ],
+    "u_fill": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_red": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_glow": [
+     -0.0073,
+     -0.0109,
+     -0.0292,
+     1
+    ],
+    "u_needle": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_seg": [
+     0,
+     0,
+     0,
+     1
+    ],
+    "u_pool": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_look": [
+     0,
+     0.18,
+     0.01,
+     0
+    ]
+   }
+  },
+  {
+   "name": "tachNum",
+   "shader": "gauge",
+   "field": "tachNum",
+   "uniforms": {
+    "u_val": [
+     0,
+     0,
+     2,
+     0
+    ],
+    "u_band": [
+     0,
+     0,
+     -10,
+     78
+    ],
+    "u_shape": [
+     58,
+     0,
+     0,
+     1
+    ],
+    "u_fill": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_red": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_glow": [
+     -0.0073,
+     -0.0109,
+     -0.0292,
+     1
+    ],
+    "u_needle": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_seg": [
+     0,
+     0,
+     0,
+     1
+    ],
+    "u_pool": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_look": [
+     0,
+     0.18,
+     0.01,
+     0
+    ]
+   }
+  },
+  {
+   "name": "speedTint",
+   "shader": "gauge",
+   "field": "speedTint",
+   "uniforms": {
+    "u_val": [
+     0.035891,
+     0,
+     2,
+     0
+    ],
+    "u_band": [
+     2.6,
+     36.6,
+     0,
+     0
+    ],
+    "u_shape": [
+     2.5,
+     0,
+     0,
+     1
+    ],
+    "u_fill": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_red": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_glow": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_needle": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_seg": [
+     0,
+     0,
+     0.03589,
+     0.97748
+    ],
+    "u_pool": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_look": [
+     1,
+     0,
+     1,
+     0
+    ]
+   },
+   "art": false
+  },
+  {
+   "name": "speedBand",
+   "shader": "gauge",
+   "field": "speedBand",
+   "uniforms": {
+    "u_val": [
+     0.030161,
+     0,
+     2,
+     0
+    ],
+    "u_band": [
+     -9,
+     9,
+     -9.4,
+     74.6
+    ],
+    "u_shape": [
+     1,
+     3.5,
+     0,
+     0
+    ],
+    "u_fill": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_red": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_glow": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_needle": [
+     1,
+     0.9608,
+     0.9373,
+     1
+    ],
+    "u_seg": [
+     0,
+     0,
+     0.03016,
+     0.97748
+    ],
+    "u_pool": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_look": [
+     0.25,
+     0,
+     2,
+     0
+    ]
+   },
+   "art": false
+  },
+  {
+   "name": "tachTint",
+   "shader": "gauge",
+   "field": "tachTint",
+   "uniforms": {
+    "u_val": [
+     0.035891,
+     0,
+     2,
+     0
+    ],
+    "u_band": [
+     2.6,
+     36.6,
+     0,
+     0
+    ],
+    "u_shape": [
+     2.5,
+     0,
+     0,
+     1
+    ],
+    "u_fill": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_red": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_glow": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_needle": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_seg": [
+     0,
+     0,
+     0.03589,
+     0.97748
+    ],
+    "u_pool": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_look": [
+     1,
+     0,
+     1,
+     0
+    ]
+   },
+   "art": false
+  },
+  {
+   "name": "tachBand",
+   "shader": "gauge",
+   "field": "tachBand",
+   "uniforms": {
+    "u_val": [
+     0.030161,
+     0,
+     2,
+     0
+    ],
+    "u_band": [
+     -9,
+     9,
+     -9.4,
+     74.6
+    ],
+    "u_shape": [
+     1,
+     3.5,
+     0,
+     0
+    ],
+    "u_fill": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_red": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_glow": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_needle": [
+     1,
+     0.9608,
+     0.9373,
+     1
+    ],
+    "u_seg": [
+     0,
+     0,
+     0.03016,
+     0.97748
+    ],
+    "u_pool": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_look": [
+     0.25,
+     0,
+     2,
+     0
+    ]
+   },
+   "art": false
+  },
+  {
+   "name": "shift",
+   "shader": "leds",
+   "x": 461,
+   "y": 27,
+   "w": 998,
+   "h": 18,
+   "uniforms": {
+    "u_led": [
+     18,
+     0,
+     0,
+     1
+    ],
+    "u_geom": [
+     0,
+     0,
+     20,
+     18
+    ],
+    "u_split": [
+     4,
+     7,
+     0,
+     0
+    ],
+    "u_lean": [
+     0,
+     530,
+     0,
+     0
+    ],
+    "u_c0": [
+     0.298,
+     0.902,
+     0.9529,
+     1
+    ],
+    "u_c1": [
+     1,
+     0.502,
+     0.7686,
+     1
+    ],
+    "u_c2": [
+     1,
+     0.2784,
+     0.4824,
+     1
+    ],
+    "u_off": [
+     0.17,
+     0.15,
+     0.14,
+     1
+    ]
+   }
+  },
+  {
+   "name": "gearOutline",
+   "shader": "gauge",
+   "field": "gearOutline",
+   "uniforms": {
+    "u_val": [
+     0.210142,
+     0,
+     2,
+     0
+    ],
+    "u_band": [
+     -1.5,
+     1.5,
+     0,
+     0
+    ],
+    "u_shape": [
+     1,
+     0,
+     0,
+     0
+    ],
+    "u_fill": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_red": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_glow": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_needle": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_seg": [
+     0,
+     0,
+     0.21014,
+     1
+    ],
+    "u_pool": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_look": [
+     0.25,
+     0,
+     2,
+     0
+    ]
+   },
+   "art": false
+  },
+  {
+   "name": "chevrons",
+   "shader": "gauge",
+   "field": "chevrons",
+   "uniforms": {
+    "u_val": [
+     0,
+     0,
+     2,
+     0
+    ],
+    "u_band": [
+     -2,
+     2,
+     0,
+     0
+    ],
+    "u_shape": [
+     1,
+     0,
+     0,
+     0
+    ],
+    "u_fill": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_red": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_glow": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_needle": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_seg": [
+     2,
+     33.29,
+     0,
+     0.16218
+    ],
+    "u_pool": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_look": [
+     0.25,
+     0,
+     2,
+     0
+    ]
+   },
+   "art": false
+  },
+  {
+   "name": "boostBar",
+   "shader": "leds",
+   "x": 488,
+   "y": 166,
+   "w": 160,
+   "h": 6,
+   "uniforms": {
+    "u_led": [
+     64,
+     0,
+     0,
+     0
+    ],
+    "u_geom": [
+     0,
+     0,
+     4,
+     6
+    ],
+    "u_split": [
+     99,
+     99,
+     0,
+     0
+    ],
+    "u_lean": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_c0": [
+     1,
+     0.9608,
+     0.9373,
+     1
+    ],
+    "u_c1": [
+     1,
+     0.9608,
+     0.9373,
+     1
+    ],
+    "u_c2": [
+     1,
+     0.9608,
+     0.9373,
+     1
+    ],
+    "u_off": [
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "name": "powerBar",
+   "shader": "leds",
+   "x": 800,
+   "y": 200,
+   "w": 320,
+   "h": 8,
+   "uniforms": {
+    "u_led": [
+     64,
+     0,
+     0,
+     0
+    ],
+    "u_geom": [
+     0,
+     0,
+     5,
+     8
+    ],
+    "u_split": [
+     99,
+     99,
+     0,
+     0
+    ],
+    "u_lean": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_c0": [
+     0.298,
+     0.902,
+     0.9529,
+     1
+    ],
+    "u_c1": [
+     0.298,
+     0.902,
+     0.9529,
+     1
+    ],
+    "u_c2": [
+     0.298,
+     0.902,
+     0.9529,
+     1
+    ],
+    "u_off": [
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "name": "fuelBar",
+   "shader": "gauge",
+   "field": "fuelBar",
+   "uniforms": {
+    "u_val": [
+     0.014694,
+     0,
+     2,
+     0
+    ],
+    "u_band": [
+     -4.26,
+     4.26,
+     0,
+     0
+    ],
+    "u_shape": [
+     1,
+     0,
+     0,
+     0
+    ],
+    "u_fill": [
+     1,
+     0.9608,
+     0.9373,
+     1
+    ],
+    "u_red": [
+     1,
+     0.9608,
+     0.9373,
+     1
+    ],
+    "u_glow": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_needle": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_seg": [
+     0,
+     0,
+     0.01469,
+     0.98531
+    ],
+    "u_pool": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_look": [
+     0.25,
+     0,
+     2,
+     0
+    ]
+   },
+   "art": false
+  },
+  {
+   "name": "oilBar",
+   "shader": "gauge",
+   "field": "oilBar",
+   "uniforms": {
+    "u_val": [
+     0.014694,
+     0,
+     2,
+     0
+    ],
+    "u_band": [
+     -4.26,
+     4.26,
+     0,
+     0
+    ],
+    "u_shape": [
+     1,
+     0,
+     0,
+     0
+    ],
+    "u_fill": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_red": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_glow": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_needle": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_seg": [
+     0,
+     0,
+     0.01469,
+     0.98531
+    ],
+    "u_pool": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_look": [
+     0.25,
+     0,
+     2,
+     0
+    ]
+   },
+   "art": false
+  },
+  {
+   "name": "coolBar",
+   "shader": "gauge",
+   "field": "coolBar",
+   "uniforms": {
+    "u_val": [
+     0.014694,
+     0,
+     2,
+     0
+    ],
+    "u_band": [
+     -4.26,
+     4.26,
+     0,
+     0
+    ],
+    "u_shape": [
+     1,
+     0,
+     0,
+     0
+    ],
+    "u_fill": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_red": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_glow": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_needle": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_seg": [
+     0,
+     0,
+     0.01469,
+     0.98531
+    ],
+    "u_pool": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_look": [
+     0.25,
+     0,
+     2,
+     0
+    ]
+   },
+   "art": false
+  },
+  {
+   "name": "gDot",
+   "shader": "rect",
+   "x": 1408,
+   "y": 124,
+   "w": 12,
+   "h": 12,
+   "uniforms": {
+    "u_shape": [
+     0,
+     0,
+     6,
+     0
+    ],
+    "u_color": [
+     0.9608,
+     0.9725,
+     1,
+     1
+    ],
+    "u_ring": [
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "name": "modeMask",
+   "shader": "rect",
+   "x": 1338,
+   "y": 310,
+   "w": 51,
+   "h": 43,
+   "uniforms": {
+    "u_shape": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "u_color": [
+     0.3961,
+     0.1961,
+     0.3098,
+     1
+    ],
+    "u_ring": [
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  },
+  {
+   "name": "speedText",
+   "shader": "text",
+   "font": "f112w600",
+   "x": 398,
+   "y": 269,
+   "w": 206,
+   "cells": 3,
+   "align": "right",
+   "text": "",
+   "uniforms": {
+    "u_color": [
+     1,
+     0.9608,
+     0.9373,
+     1
+    ]
+   }
+  },
+  {
+   "name": "gearText",
+   "shader": "text",
+   "font": "f112w600",
+   "x": 1280,
+   "y": 269,
+   "w": 260,
+   "cells": 3,
+   "align": "left",
+   "text": "",
+   "uniforms": {
+    "u_color": [
+     1,
+     0.9608,
+     0.9373,
+     1
+    ]
+   }
+  },
+  {
+   "name": "val160",
+   "shader": "text",
+   "font": "f44w600",
+   "x": 484,
+   "y": 115,
+   "w": 914,
+   "cells": 7,
+   "align": "left",
+   "text": "",
+   "uniforms": {
+    "u_color": [
+     1,
+     0.9608,
+     0.9373,
+     1
+    ]
+   }
+  },
+  {
+   "name": "val156",
+   "shader": "text",
+   "font": "f44w600",
+   "x": 820,
+   "y": 151,
+   "w": 290,
+   "cells": 3,
+   "align": "left",
+   "text": "",
+   "uniforms": {
+    "u_color": [
+     1,
+     0.9608,
+     0.9373,
+     1
+    ]
+   }
+  },
+  {
+   "name": "wheelFront",
+   "shader": "text",
+   "font": "f40w500",
+   "x": 765,
+   "y": 455,
+   "w": 114,
+   "cells": 1,
+   "align": "left",
+   "text": "",
+   "uniforms": {
+    "u_color": [
+     0.5725,
+     0.6235,
+     0.7059,
+     1
+    ]
+   }
+  },
+  {
+   "name": "wheelRear",
+   "shader": "text",
+   "font": "f40w500",
+   "x": 859,
+   "y": 463,
+   "w": 114,
+   "cells": 1,
+   "align": "left",
+   "text": "",
+   "uniforms": {
+    "u_color": [
+     0.5725,
+     0.6235,
+     0.7059,
+     1
+    ]
+   }
+  },
+  {
+   "name": "smokeLeft0",
+   "shader": "text",
+   "font": "f40w500",
+   "x": 850,
+   "y": 489,
+   "w": 114,
+   "cells": 1,
+   "align": "left",
+   "text": "",
+   "uniforms": {
+    "u_color": [
+     1,
+     0.9608,
+     0.9373,
+     1
+    ]
+   }
+  },
+  {
+   "name": "smokeLeft1",
+   "shader": "text",
+   "font": "f40w500",
+   "x": 850,
+   "y": 489,
+   "w": 114,
+   "cells": 1,
+   "align": "left",
+   "text": "",
+   "uniforms": {
+    "u_color": [
+     1,
+     0.9608,
+     0.9373,
+     1
+    ]
+   }
+  },
+  {
+   "name": "smokeRight0",
+   "shader": "text",
+   "font": "f40w500",
+   "x": 1110,
+   "y": 489,
+   "w": 114,
+   "cells": 1,
+   "align": "left",
+   "text": "",
+   "uniforms": {
+    "u_color": [
+     1,
+     0.9608,
+     0.9373,
+     1
+    ]
+   }
+  },
+  {
+   "name": "smokeRight1",
+   "shader": "text",
+   "font": "f40w500",
+   "x": 1110,
+   "y": 489,
+   "w": 114,
+   "cells": 1,
+   "align": "left",
+   "text": "",
+   "uniforms": {
+    "u_color": [
+     1,
+     0.9608,
+     0.9373,
+     1
+    ]
+   }
+  },
+  {
+   "name": "wantedStars",
+   "shader": "text",
+   "font": "f40w500",
+   "x": 820,
+   "y": 213,
+   "w": 280,
+   "cells": 5,
+   "align": "left",
+   "text": "",
+   "uniforms": {
+    "u_color": [
+     1,
+     0.898,
+     0.8588,
+     1
+    ]
+   }
+  },
+  {
+   "name": "wantedLevel",
+   "shader": "text",
+   "font": "f18w600",
+   "x": 1010,
+   "y": 214,
+   "w": 90,
+   "cells": 7,
+   "align": "right",
+   "text": "",
+   "uniforms": {
+    "u_color": [
+     0.8745,
+     0.7765,
+     0.9255,
+     1
+    ]
+   }
+  },
+  {
+   "name": "fluids",
+   "shader": "text",
+   "font": "f24w600",
+   "x": 519,
+   "y": 469,
+   "w": 916,
+   "cells": 9,
+   "align": "left",
+   "text": "",
+   "uniforms": {
+    "u_color": [
+     1,
+     0.9608,
+     0.9373,
+     1
+    ]
+   }
+  },
+  {
+   "name": "ranges",
+   "shader": "text",
+   "font": "f22w500",
+   "x": 564,
+   "y": 498,
+   "w": 130,
+   "cells": 6,
+   "align": "left",
+   "text": "",
+   "uniforms": {
+    "u_color": [
+     0.8745,
+     0.7765,
+     0.9255,
+     1
+    ]
+   }
+  },
+  {
+   "name": "clock",
+   "shader": "text",
+   "font": "f40w500x",
+   "x": 60,
+   "y": 661,
+   "w": 114,
+   "cells": 5,
+   "align": "left",
+   "text": "",
+   "uniforms": {
+    "u_color": [
+     0.298,
+     0.902,
+     0.9529,
+     1
+    ]
+   }
+  },
+  {
+   "name": "outside",
+   "shader": "text",
+   "font": "f40w500x",
+   "x": 260,
+   "y": 661,
+   "w": 173,
+   "cells": 8,
+   "align": "left",
+   "text": "",
+   "uniforms": {
+    "u_color": [
+     0.8745,
+     0.7765,
+     0.9255,
+     1
+    ]
+   }
+  },
+  {
+   "name": "odo",
+   "shader": "text",
+   "font": "f40w500x",
+   "x": 960,
+   "y": 661,
+   "w": 208,
+   "cells": 9,
+   "align": "left",
+   "text": "",
+   "uniforms": {
+    "u_color": [
+     1,
+     0.9608,
+     0.9373,
+     1
+    ]
+   }
+  }
+ ]
+}
