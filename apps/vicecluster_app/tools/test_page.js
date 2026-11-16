@@ -215,6 +215,8 @@ FAMS.slice().reverse().forEach((f) => {
     THEMES.push({ id: f[0] + 'c', title: f[1] + ' · Comfort', family: f[0], mode: 'comfort' });
     THEMES.push({ id: f[0], title: f[1], family: f[0], mode: 'sport' });
 });
+FAMS.push(['vice1', 'GTA VI Bucharest']);
+THEMES.push({ id: 'vice1', title: 'GTA VI Bucharest', family: 'vice1', mode: 'sport' });
 const BASE = { enabled: false, theme: 'g20i1', mode: 'auto', cover: false, showing: null, source: 'car', demo: false, bench: false, panel: null,
     moving: null, speed: null, themes: THEMES, signals: [], error: null, look: 'comfort', picker: false, trying: null, canTry: false };
 let st = Object.assign({}, BASE);
@@ -228,7 +230,8 @@ function serve() {
         const r = refuse; refuse = null;
         if (r) return r;
         if (c.cmd === 'picker') st = Object.assign({}, st, { picker: !!c.on });
-        if (c.cmd === 'use') st = Object.assign({}, st, { enabled: true, theme: c.id, showing: c.id + 'c' });
+        if (c.cmd === 'use') st = Object.assign({}, st, { enabled: true, theme: c.id,
+            showing: THEMES.some((t) => t.id === c.id + 'c') ? c.id + 'c' : c.id });
         if (c.cmd === 'mode') st = Object.assign({}, st, { mode: c.mode });
         if (c.cmd === 'cover') st = Object.assign({}, st, { cover: c.on });
         if (c.cmd === 'enable') st = Object.assign({}, st, { enabled: true, showing: st.theme + 'c' });
@@ -238,7 +241,7 @@ function serve() {
 }
 const sent = (cmd) => received.some((c) => c.cmd === cmd);
 const count = (cmd, f) => received.filter((c) => c.cmd === cmd && (!f || f(c))).length;
-const THEME_ROWS = [1, 2, 3, 4, 5, 6, 7, 8].map((i) => 'clusterTheme' + i);
+const THEME_ROWS = [1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => 'clusterTheme' + i);
 const BUTTONS = ['clusterPick'].concat(THEME_ROWS, ['clusterMode', 'clusterCover', 'clusterEnable']);
 const press = async (name) => { await sleep(450); byName[name].emit('action'); };
 
@@ -297,7 +300,13 @@ async function main() {
     assert(byName.clusterPick.enabled, 'Choose on (speed unknown: the tool decides)');
     assert.strictEqual(byName.clusterMode.text, 'Sport or Comfort: by the drive mode');
     assert.strictEqual(byName.clusterEnable.text, "ViceCluster: off (the car's own cluster)");
-    console.log('ok   connected: "' + S.text + '"; 8 rows ("' + byName.clusterTheme1.text + '" ...)');
+    console.log('ok   connected: "' + S.text + '"; 9 rows ("' + byName.clusterTheme1.text + '" ...)');
+
+    await press('clusterTheme9');
+    await until('use vice1', () => received.some((c) => c.cmd === 'use' && c.id === 'vice1'));
+    await until('vice1 in use', () => byName.clusterTheme9.text === 'In use: GTA VI Bucharest' &&
+        S.text === 'On the cluster: GTA VI Bucharest (Sport)');
+    console.log('ok   ninth row: GTA VI Bucharest is visible and sends use vice1');
 
     /* a row: use (on with that family) */
     await press('clusterTheme4');

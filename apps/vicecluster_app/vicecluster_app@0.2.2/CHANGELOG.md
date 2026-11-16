@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.2
+
+- Show the ninth theme family, GTA VI Bucharest, in the iDrive theme list.
+- Test that its row is visible, selects vice1, and is disabled while the
+  preview picker covers the page. The cluster tool and rendering are unchanged.
+
 ## 0.2.1
 
 - The fuel gauge: litres as a share of the 330e's 40 l tank.

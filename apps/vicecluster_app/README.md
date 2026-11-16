@@ -97,7 +97,7 @@ second, `speed`.
 
 ## Building and testing
 
-- `node tools/make_page.js vicecluster_app@0.2.1` writes `application.xml`
+- `node tools/make_page.js vicecluster_app@0.2.2` writes `application.xml`
   and `uiDescription.json` from one list; `node tools/make_icon.js <png>`
   the tile icon (a gauge).
 - `node tools/test_page.js` runs the app against a fake SDK, HMI and tool

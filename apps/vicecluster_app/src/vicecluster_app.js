@@ -50,9 +50,10 @@ const N = {
     status: 'clusterStatus', pick: 'clusterPick',
     theme1: 'clusterTheme1', theme2: 'clusterTheme2', theme3: 'clusterTheme3', theme4: 'clusterTheme4',
     theme5: 'clusterTheme5', theme6: 'clusterTheme6', theme7: 'clusterTheme7', theme8: 'clusterTheme8',
+    theme9: 'clusterTheme9',
     mode: 'clusterMode', cover: 'clusterCover', enable: 'clusterEnable',
 };
-const THEMES = [N.theme1, N.theme2, N.theme3, N.theme4, N.theme5, N.theme6, N.theme7, N.theme8];
+const THEMES = [N.theme1, N.theme2, N.theme3, N.theme4, N.theme5, N.theme6, N.theme7, N.theme8, N.theme9];
 /* an HMI pop-up takes the focus while the page stays visible; leaving or
  * switching states takes it too, just before 'visible' goes: wait this long
  * to tell them apart */
