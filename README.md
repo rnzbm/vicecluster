@@ -1,13 +1,13 @@
 # ViceCluster
 
-Whole-cluster themes for the BMW iDrive 7 head unit (MGU): 17 themes drawn on
+Whole-cluster themes for the BMW iDrive 7 head unit (MGU): 18 themes drawn on
 the instrument cluster through cluster-render's `panel` target, under the
 car's own warning lights, and a touch picker of them on the central screen.
 Installed from the [mgu Store](https://github.com/robertnisipeanu/mgu-store).
 
-The nine families: eight of them a Sport and a Comfort theme switched by the
+The ten families: eight of them a Sport and a Comfort theme switched by the
 car's drive mode (G20 inspired 1 and 2, LCI inspired 1 and 2, Three-dial 1
-and 2, Performance 1 and 2), and GTA VI Bucharest in Sport alone.
+and 2, Performance 1 and 2), and GTA VI Bucharest and GTA VI Garage in Sport alone.
 
 This repository holds the tool, its iDrive app and the release tooling only:
 everything the two need is here, and the Store reads its catalog from this
@@ -34,7 +34,7 @@ ViceCluster installs as `vicecluster` (tool) and `vicecluster_app` (app),
 not as an update of `vizualyse-cluster` or `vizualyse_cluster`. The app has
 its own UUIDs and a **ViceCluster** tile. Its service, settings and control
 socket are separate; the original repository and apps can stay installed.
-The app requires `vicecluster` 0.3.2 or newer, never the original tool.
+The app requires `vicecluster` 0.3.3 or newer, never the original tool.
 
 The renderers and Python are shared dependencies. The installed versions
 are reused when they meet the minimum requirements.

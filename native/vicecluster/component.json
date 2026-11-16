@@ -1,10 +1,10 @@
 {
   "id": "vicecluster",
   "kind": "tool",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "license": "GPL-3.0-or-later",
   "title": "ViceCluster",
-  "description": "EXPERIMENTAL, NOT YET TRIED ON A CAR. Whole-cluster themes drawn over the instrument cluster through cluster-render's panel target, under the car's own warning lights: nine families (G20 inspired 1 and 2, LCI inspired 1 and 2, Three-dial 1 and 2, Performance 1 and 2: each a Sport and a Comfort theme switched by the drive mode; GTA VI Bucharest in Sport). Drawn by small shaders on the cluster with textures sent once (about 1.7-4.1 MB at start), so only a few KB/s of numbers cross the link while driving. Readings the car does not give show as --. Chosen on the central screen by touch, with a preview of each theme and a 10 s try on the cluster while parked (the ViceCluster iDrive app). About 15 MB.",
+  "description": "EXPERIMENTAL. Whole-cluster themes drawn over the instrument cluster through cluster-render's panel target, under the car's own warning lights: ten families (G20 inspired 1 and 2, LCI inspired 1 and 2, Three-dial 1 and 2, Performance 1 and 2: each a Sport and a Comfort theme switched by the drive mode; GTA VI Bucharest and GTA VI Garage in Sport). Drawn by small shaders on the cluster with textures sent once (about 1.7-4.6 MB at start), so only a few KB/s of numbers cross the link while driving. Readings the car does not give show as --. Chosen on the central screen by touch, with a preview of each theme and a 10 s try on the cluster while parked (the ViceCluster iDrive app).",
   "requires": {
     "mgu-deploy": "0.7.0",
     "mgu-python": "1.0.0",
@@ -1145,6 +1145,71 @@
       "mode": "0644"
     },
     {
+      "path": "vice2.art.tiles.gz",
+      "from": "themes/built/vice2.art.tiles.gz",
+      "mode": "0644"
+    },
+    {
+      "path": "vice2.f112w600.font.gz",
+      "from": "themes/built/vice2.f112w600.font.gz",
+      "mode": "0644"
+    },
+    {
+      "path": "vice2.f12w600.font.gz",
+      "from": "themes/built/vice2.f12w600.font.gz",
+      "mode": "0644"
+    },
+    {
+      "path": "vice2.f22w500.font.gz",
+      "from": "themes/built/vice2.f22w500.font.gz",
+      "mode": "0644"
+    },
+    {
+      "path": "vice2.f24w600.font.gz",
+      "from": "themes/built/vice2.f24w600.font.gz",
+      "mode": "0644"
+    },
+    {
+      "path": "vice2.f16w500.font.gz",
+      "from": "themes/built/vice2.f16w500.font.gz",
+      "mode": "0644"
+    },
+    {
+      "path": "vice2.f40w500.font.gz",
+      "from": "themes/built/vice2.f40w500.font.gz",
+      "mode": "0644"
+    },
+    {
+      "path": "vice2.f44w600.font.gz",
+      "from": "themes/built/vice2.f44w600.font.gz",
+      "mode": "0644"
+    },
+    {
+      "path": "vice2.fuelBar.field.gz",
+      "from": "themes/built/vice2.fuelBar.field.gz",
+      "mode": "0644"
+    },
+    {
+      "path": "vice2.gearOutline.field.gz",
+      "from": "themes/built/vice2.gearOutline.field.gz",
+      "mode": "0644"
+    },
+    {
+      "path": "vice2.logic.js",
+      "from": "themes/built/vice2.logic.js",
+      "mode": "0644"
+    },
+    {
+      "path": "vice2.speedNum.field.gz",
+      "from": "themes/built/vice2.speedNum.field.gz",
+      "mode": "0644"
+    },
+    {
+      "path": "vice2.theme.json",
+      "from": "themes/built/vice2.theme.json",
+      "mode": "0644"
+    },
+    {
       "path": "picker.f20.font.gz",
       "from": "picker/f20.font.gz",
       "mode": "0644"
@@ -1332,6 +1397,16 @@
     {
       "path": "picker.vice1.thumb.png",
       "from": "picker/vice1.thumb.png",
+      "mode": "0644"
+    },
+    {
+      "path": "picker.vice2.png",
+      "from": "picker/vice2.png",
+      "mode": "0644"
+    },
+    {
+      "path": "picker.vice2.thumb.png",
+      "from": "picker/vice2.thumb.png",
       "mode": "0644"
     }
   ],

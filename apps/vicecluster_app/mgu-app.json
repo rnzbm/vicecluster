@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "id": "vicecluster_app",
-  "version": "0.2.2",
-  "tree": "vicecluster_app@0.2.2",
+  "version": "0.2.3",
+  "tree": "vicecluster_app@0.2.3",
   "modules": [
     "src/vicecluster_app.js",
     "src/cluster_control.js",

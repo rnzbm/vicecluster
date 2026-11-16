@@ -1,6 +1,6 @@
 {
   "name": "vicecluster_app",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "ViceCluster: chooses the instrument cluster theme (the vicecluster tool): a picker on the central screen with a preview of every theme, touched, a Try on the cluster while parked, Sport or Comfort, on or off",
   "private": false,
   "main": "javascript/runner.js",

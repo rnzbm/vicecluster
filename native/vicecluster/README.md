@@ -32,8 +32,8 @@ uniforms while driving) and the rules every theme keeps:
 
 ## Themes
 
-Nine families: eight of them a Sport and a Comfort theme switched by the
-drive mode, and GTA VI Bucharest, in Sport alone. Ported from mockups
+Ten families: eight of them a Sport and a Comfort theme switched by the
+drive mode, and GTA VI Bucharest and GTA VI Garage, in Sport alone. Ported from mockups
 (made with the impeccable skill; the Sport ones by Fable 5.2 and Opus 5.5,
 the Comfort ones by Fable 5.2): [Sport designs](https://claude.ai/artifact/Vf25Jm1QRZ87dGBo8ZTy6A)
 (private). The eight echo the look of BMW's G20 and LCI clusters, of a
@@ -59,6 +59,7 @@ typefaces (THIRD-PARTY.md).
 | Three-dial 2 | `tri2` | sport | 40 | 12 | 3.52 | 2.20 | 2.08 |
 | Three-dial 2 · Comfort | `tri2c` | comfort | 31 | 12 | 3.07 | 1.75 | 2.12 |
 | GTA VI Bucharest | `vice1` | sport | 34 | 11 | 4.08 | 4.08 | 2.77 |
+| GTA VI Garage | `vice2` | sport | 28 | 11 | 4.66 | 4.66 | 2.69 |
 
 (`node tools/theme_table.js` prints this from the built themes.) While
 driving, a theme sends 4-20 KB/s of uniforms (`test/themes_test.js`), next to
@@ -71,7 +72,7 @@ not shipped.
   It draws through cluster-render's socket (the cluster) and mgu-render's
   (the picker on the central screen), and needs no network.
 - Settings: `/var/opt/vicecluster/state/settings.json`:
-  `enabled`, `theme` (a family: `g20i1` ... `vice1`), `mode` (`auto`: the
+  `enabled`, `theme` (a family: `g20i1` ... `vice2`), `mode` (`auto`: the
   car's drive mode picks Sport or Comfort; `sport`; `comfort`), `cover`
   (black over the car's own strip under the theme), `source` (`car` or
   `demo`), `bench`.
@@ -114,7 +115,7 @@ Browser and Steam).
   +108+82: the HMI's title bar and its left strip with the back arrow stay
   the HMI's), drawn in JS from the previews and glyph atlases built off the
   car (`picker.*`, `tools/picker_build.js`): a large preview of the chosen
-  family (swipe it or press < >), the nine families as tiles, Preview Sport
+  family (swipe it or press < >), the ten families as tiles, Preview Sport
   / Comfort, Use, Try, Auto / Sport / Comfort, Turn themes off. Only the
   regions that change go to mgu-render again (a press: about 27,000 px; a new
   preview: the preview's 470,000); an IMAGE op at least once a second keeps it

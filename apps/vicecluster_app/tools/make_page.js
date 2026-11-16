@@ -19,6 +19,7 @@ const C = [
     [37, 'button', 'LT_Button_1Row', 'clusterTheme7', 3, 'Theme'],
     [38, 'button', 'LT_Button_1Row', 'clusterTheme8', 3, 'Theme'],
     [42, 'button', 'LT_Button_1Row', 'clusterTheme9', 3, 'Theme'],
+    [43, 'button', 'LT_Button_1Row', 'clusterTheme10', 3, 'Theme'],
     [39, 'button', 'LT_Button_1Row', 'clusterMode', 3, 'Sport or Comfort: by the drive mode'],
     [40, 'button', 'LT_Button_1Row', 'clusterCover', 3, "The car's strip under the theme: shown"],
     [41, 'button', 'LT_Button_1Row', 'clusterEnable', 3, 'ViceCluster: off'],

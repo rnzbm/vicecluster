@@ -12,7 +12,7 @@ One `LT_State_Wide` page, all of it usable with the iDrive controller:
 |---|---|
 | status | `On the cluster: G20 inspired 1 (Comfort)`, `Off - the car's own cluster shows`, `The picker is on the screen - the back arrow on the left returns here`, `Trying a theme on the cluster...`, `Error: ...` (a failed command's, for 10 s), `The cluster: ...` (the tool's), `The cluster themes tool is not running - ...` |
 | Choose with previews (touch the screen) | opens the empty screen state, then `picker`: the tool's picker over the app area (below). Off while the car moves (`(only while parked)`) |
-| a row per family (nine) | `use` with that family: on the cluster, themes on. The one in use says `In use: ` |
+| a row per family (ten) | `use` with that family: on the cluster, themes on. The one in use says `In use: ` |
 | Sport or Comfort: by the drive mode / always Sport / always Comfort | `mode`, the next of the three |
 | The car's strip under the theme: shown / covered (black) | `cover` |
 | ViceCluster: on / off (the car's own cluster) | `enable` / `disable` |
@@ -97,7 +97,7 @@ second, `speed`.
 
 ## Building and testing
 
-- `node tools/make_page.js vicecluster_app@0.2.2` writes `application.xml`
+- `node tools/make_page.js vicecluster_app@0.2.3` writes `application.xml`
   and `uiDescription.json` from one list; `node tools/make_icon.js <png>`
   the tile icon (a gauge).
 - `node tools/test_page.js` runs the app against a fake SDK, HMI and tool

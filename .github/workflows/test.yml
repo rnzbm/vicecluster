@@ -54,6 +54,7 @@ jobs:
           node native/vicecluster/test/vice1_smoke_test.js
           node native/vicecluster/test/vice1_motion_test.js
           node native/vicecluster/test/vice1_wanted_test.js
+          node native/vicecluster/test/vice2_test.js
       - name: Release tooling
         run: node release/test/release_test.js
       - name: ViceCluster app page on Node 8

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.3
+
+- Include the tenth family, GTA VI Garage, in the iDrive theme list.
+- Require ViceCluster 0.3.3, which includes the new portrait and garage theme.
+- Test both GTA VI rows and their selection without changing vehicle controls.
+
 ## 0.2.2
 
 - Show the ninth theme family, GTA VI Bucharest, in the iDrive theme list.

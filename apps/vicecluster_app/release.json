@@ -1,7 +1,7 @@
 {
   "build": "node tools/build.js",
   "requires": {
-    "vicecluster": "0.3.2"
+    "vicecluster": "0.3.3"
   },
   "uninstallable": true,
   "mguHmi": [

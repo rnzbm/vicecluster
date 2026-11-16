@@ -49,7 +49,8 @@ const themes = fs.readdirSync(kit).filter((n) => /\.theme\.json$/.test(n)).map((
 
 /* ---- the look ---- */
 const fams = families(themes);
-assert.strictEqual(fams.length, 9, 'nine families');
+assert.strictEqual(fams.length, 10, 'ten families');
+assert.ok(fams.some((f) => f.family === 'vice2' && f.sport === 'vice2'), 'GTA VI Garage in picker');
 fams.forEach((f) => assert.ok(f.sport || f.comfort, f.family + ' has a theme'));
 const base = { families: fams, sel: 0, look: 'sport', enabled: true, inUse: fams[0].family, mode: 'auto', trying: null, canTry: true, line: 'x', pressed: null };
 const targets = view.layout(base);
