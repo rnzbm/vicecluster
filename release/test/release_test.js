@@ -178,7 +178,8 @@ test('ViceCluster has its own app UUIDs, service, settings and control socket', 
     const read = (rel) => fs.readFileSync(path.join(root, rel), 'utf8');
     const app = components().find((c) => c.id === 'vicecluster_app');
     const tool = components().find((c) => c.id === 'vicecluster');
-    assert.strictEqual(app.requires.vicecluster, tool.version);
+    assert.ok(catalog.compareVersions(tool.version, app.requires.vicecluster) >= 0,
+        'a compatible tool-only patch does not require republishing the app');
     const ui = JSON.parse(read(`${app.dir}/vicecluster_app@${app.version}/rhmiData/application.json`)).application;
     assert.strictEqual(ui.name, app.id);
     assert.strictEqual(ui.entryPoints[0].name, app.id);

@@ -30,16 +30,16 @@ const RECHECK_MS = 10000;
  * socket in that group is open to every app (found on the car, 2026-11-05).
  * The socket gets the app's own group instead, found by its package name:
  * the gid, or null while the app is not installed. */
-function appGid(appName) {
-    let dirs = [];
-    try { dirs = fs.readdirSync(OAP_DIR).filter((d) => /^oap_\d+$/.test(d)); } catch (e) { return null; }
-    for (const d of dirs) {
-        try {
-            const pkg = JSON.parse(fs.readFileSync(path.join(OAP_DIR, d, 'source', 'package.json'), 'utf8'));
-            if (pkg.name === appName) return fs.statSync(path.join(OAP_DIR, d)).gid;
-        } catch (e) { /* not an app, or unreadable */ }
-    }
-    return null;
+function appGid(appName, root) {
+    root = root || OAP_DIR;
+    try {
+        // A reinstall can leave an older home with exactly the same package name.
+        const entry = JSON.parse(fs.readFileSync(path.join(root, 'oap_12201', 'data', 'apps', appName + '.json'), 'utf8'));
+        const uid = Number(entry.userId);
+        if (!Number.isSafeInteger(uid) || uid <= 12202 || String(uid) !== String(entry.userId)) return null;
+        const pkg = JSON.parse(fs.readFileSync(path.join(root, 'oap_' + uid, 'source', 'package.json'), 'utf8'));
+        return pkg.name === appName ? uid : null;
+    } catch (e) { return null; }
 }
 
 /* opts: { app (the iDrive app's package name), status() -> object,
@@ -93,11 +93,13 @@ function startControl(opts) {
         if (!unixPath) return;
         const g = appGid(opts.app);
         if (g === gid) return;
-        gid = g;
+        clients.forEach((s) => s.destroy());
         try {
+            fs.chmodSync(PATH, 0o600);
             if (g === null) { fs.chmodSync(PATH, 0o600); fs.chownSync(PATH, 0, 0); }
             else { fs.chownSync(PATH, 0, g); fs.chmodSync(PATH, 0o660); }
-        } catch (e) { opts.log('control: ' + e.message); }
+            gid = g;
+        } catch (e) { gid = undefined; opts.log('control: ' + e.message); return; }
         opts.log('control: ' + PATH + (g === null ? ' root only (' + opts.app + ' is not installed)' : ' for ' + opts.app + ' (group ' + g + ')'));
     };
     server.listen(PATH, () => {
@@ -123,4 +125,4 @@ function startControl(opts) {
     };
 }
 
-module.exports = { startControl, PATH };
+module.exports = { startControl, PATH, appGid };

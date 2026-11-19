@@ -23,19 +23,22 @@ assert.strictEqual(Object.keys(theme.assets).length, 11);
 assert(!theme.layers.some((l) => /wheel|smoke/.test(l.name)));
 assert(design.includes('ENGINE POWER'));
 assert(design.includes('data-text="wantedStars"'));
-assert(design.includes('fill="#080512" opacity=".9"'), 'horsepower needs a dark backing');
+assert(design.includes('fill="#080512" opacity=".98"'), 'horsepower needs an opaque dark backing');
 assert(design.includes('fill="#080512" opacity=".94"'), 'Wanted needs a dark backing');
 assert(design.includes('href="assets/gtalogo-cutout.png"'), 'GTA logo should replace the photo subtitle');
 assert(!design.includes('VICE CITY / PRIVATE GARAGE'));
-assert.match(design, /<image x="610" y="52" width="700" height="532" preserveAspectRatio="xMidYMid meet"/,
-    'Decorul extins trebuie sa acopere tot hexagonul fara redimensionare disproportionata');
-assert(fs.existsSync(path.join(base, 'themes/vice2/assets/garage-full-hex.jpg')));
+assert.match(design, /<image x="742" y="112" width="436" height="343"[\s\S]*?clip-path="url\(#garagePhotoClip\)"/,
+    'Fotografia intreaga trebuie incadrata fara sa fie taiata de hexagon');
+assert.match(design, /<clipPath id="garagePhotoClip">\s*<rect x="742" y="112" width="436" height="343" rx="8"\/>/,
+    'Rama rotunjita trebuie sa pastreze poza intreaga');
 const scene = design.slice(design.indexOf('<g id="garageScene"'), design.indexOf('</g>', design.indexOf('<g id="garageScene"')));
-assert(!scene.includes('stroke-width="2"'), 'Fotografia nu trebuie sa aiba rama peste logo');
-assert(scene.includes('href="assets/garage-full-hex.jpg"'), 'Decorul generat trebuie sa umple hexagonul');
-assert(!design.includes('garageBackdropBlur'), 'Decorul nu trebuie inlocuit cu un fundal estompat');
-assert(scene.indexOf('garageBottomFade') < scene.indexOf('href="assets/gtalogo-cutout.png"'),
-    'Logo-ul trebuie sa ramana deasupra extensiei decorului');
+assert(scene.includes('href="assets/eumijloc.jpg"'), 'Fotografia originala trebuie folosita direct');
+assert(scene.includes('href="assets/gtalogo-cutout.png"'), 'Logo-ul GTA VI trebuie sa ramana jos');
+assert(scene.indexOf('stroke="url(#footerAccent)"') < scene.indexOf('href="assets/gtalogo-cutout.png"'),
+    'Logo-ul trebuie desenat deasupra ramei fotografiei');
+assert(!scene.includes('clip-path="url(#coreClip)"'),
+    'Fotografia nu trebuie taiata dupa forma hexagonului');
+assert(!scene.includes('garage-full-hex.jpg'), 'Decorul din alt stil nu trebuie sa apara in scena');
 const stars = theme.layers.find((layer) => layer.name === 'wantedStars');
 const starIndex = stars.glyphs.indexOf('*');
 const fiveStarWidth = 4 * stars.adv[starIndex] + stars.cellW;

@@ -141,10 +141,10 @@ const LETS = [
     ["wanted", "b8", function (S, H, L) { var kmh = S.kmh, speedValid = L.speedValid, when = H.when; return (when(speedValid, when(kmh >= P.wantedKmh[4], 5, when(kmh >= P.wantedKmh[3], 4, when(kmh >= P.wantedKmh[2], 3, when(kmh >= P.wantedKmh[1], 2, when(kmh >= P.wantedKmh[0], 1, 0))))), 0)); }],
 ];
 const LAYERS = [
-    { info: {"name":"powerBar","kind":"leds","x":852,"y":211}, b: {
+    { info: {"name":"powerBar","kind":"leds","x":852,"y":143}, b: {
         "lit": ["b11", function (S, H, L) { var eng = L.eng, round = H.round, clamp = H.clamp; return (round(clamp(eng / P.engMaxHp) * 64)); }],
     } },
-    { info: {"name":"val156","kind":"text","x":820,"y":170,"rate":10,"nullText":"--"}, b: {
+    { info: {"name":"val156","kind":"text","x":820,"y":95,"rate":10,"nullText":"--"}, b: {
         "text": ["b12", function (S, H, L) { var eng = L.eng, fmt = H.fmt, max = H.max; return (fmt(max(0, eng))); }],
     } },
     { info: {"name":"wantedStars","kind":"text","x":922,"y":539,"nullText":""}, b: {

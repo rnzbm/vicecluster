@@ -422,7 +422,7 @@
    "name": "powerBar",
    "shader": "leds",
    "x": 852,
-   "y": 211,
+   "y": 143,
    "w": 216,
    "h": 4,
    "uniforms": {
@@ -481,7 +481,7 @@
    "shader": "text",
    "font": "f44w600",
    "x": 820,
-   "y": 170,
+   "y": 95,
    "w": 280,
    "cells": 3,
    "align": "left",

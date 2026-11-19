@@ -45,6 +45,27 @@ comp.files.forEach((f) => {
 fs.readdirSync(path.join(HERE, 'themes', 'built')).filter((n) => /^samplec?\./.test(n))
     .forEach((n) => fs.copyFileSync(path.join(HERE, 'themes', 'built', n), path.join(kit, n)));
 const state = path.join(tmp, 'state');
+const { appGid } = require(path.join(kit, 'control.js'));
+assert.strictEqual(typeof require(path.join(kit, 'vice_picker_client.js')).RenderClient, 'function');
+const oap = path.join(tmp, 'registry-test');
+fs.mkdirSync(oap);
+function put(rel, obj) {
+    const parts = rel.split('/');
+    let dir = oap;
+    parts.slice(0, -1).forEach((part) => {
+        dir = path.join(dir, part);
+        if (!fs.existsSync(dir)) fs.mkdirSync(dir);
+    });
+    fs.writeFileSync(path.join(oap, rel), JSON.stringify(obj));
+}
+const app = 'vicecluster_app', registration = 'oap_12201/data/apps/' + app + '.json';
+put('oap_12344/source/package.json', { name: app });
+put('oap_12345/source/package.json', { name: app });
+assert.strictEqual(appGid(app, oap), null);
+put(registration, { userId: 12345 });
+assert.strictEqual(appGid(app, oap), 12345);
+put('oap_12345/source/package.json', { name: 'different_app' });
+assert.strictEqual(appGid(app, oap), null);
 fs.mkdirSync(state);
 fs.writeFileSync(path.join(state, 'settings.json'), JSON.stringify({ enabled: false, theme: 'sample', source: 'car', bench: false }));
 const theme = JSON.parse(fs.readFileSync(path.join(kit, 'sample.theme.json'), 'utf8'));

@@ -39,7 +39,7 @@ const MAX_KMH = 3;
 const SIGNAL_TTL_MS = 2000;
 const TRY_MS = Number(process.env.CLUSTER_TRY_MS) || 10000;
 /* the picker: mgu-render's client, and the touch reader's python and source */
-const RENDER_CLIENT = process.env.CLUSTER_RENDER_CLIENT || '/var/opt/mgu-render/current/mgu_render_client.js';
+const RENDER_CLIENT = process.env.CLUSTER_RENDER_CLIENT || path.join(HERE, 'vice_picker_client.js');
 const PYTHON = process.env.CLUSTER_PYTHON || '/var/opt/mgu-python/current/bin/python3';
 const TOUCH_IFACE = process.env.CLUSTER_TOUCH_IFACE || 'vlan73';
 const TOUCH_SRC = process.env.CLUSTER_TOUCH_SRC || '160.48.199.115';

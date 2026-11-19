@@ -59,7 +59,7 @@ typefaces (THIRD-PARTY.md).
 | Three-dial 2 | `tri2` | sport | 40 | 12 | 3.52 | 2.20 | 2.08 |
 | Three-dial 2 · Comfort | `tri2c` | comfort | 31 | 12 | 3.07 | 1.75 | 2.12 |
 | GTA VI Bucharest | `vice1` | sport | 34 | 11 | 4.08 | 4.08 | 2.77 |
-| GTA VI Garage | `vice2` | sport | 28 | 11 | 4.66 | 4.66 | 2.69 |
+| GTA VI Garage | `vice2` | sport | 28 | 11 | 4.25 | 4.25 | 2.69 |
 
 (`node tools/theme_table.js` prints this from the built themes.) While
 driving, a theme sends 4-20 KB/s of uniforms (`test/themes_test.js`), next to

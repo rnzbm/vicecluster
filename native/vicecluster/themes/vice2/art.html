@@ -97,6 +97,11 @@ text { font-family: "ArchivoN"; fill: var(--text); font-variant-numeric: tabular
     <linearGradient id="coreFill" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#1c153a"/><stop offset="1" stop-color="#30193f"/>
     </linearGradient>
+    <linearGradient id="garageFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4c2d4c"/>
+      <stop offset=".48" stop-color="#38243f"/>
+      <stop offset="1" stop-color="#241a30"/>
+    </linearGradient>
     <linearGradient id="footerFill" x1="0" y1="0" x2="1" y2=".5">
       <stop offset="0" stop-color="#101b2c"/><stop offset=".3" stop-color="#17122c"/>
       <stop offset=".68" stop-color="#21112d"/><stop offset="1" stop-color="#31182e"/>
@@ -122,11 +127,9 @@ text { font-family: "ArchivoN"; fill: var(--text); font-variant-numeric: tabular
     <clipPath id="coreClip">
       <polygon points="773,52 1147,52 1310,318 1147,584 773,584 610,318"/>
     </clipPath>
-    <linearGradient id="garageBottomFade" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#080512" stop-opacity="0"/>
-      <stop offset=".55" stop-color="#080512" stop-opacity=".7"/>
-      <stop offset="1" stop-color="#080512" stop-opacity=".9"/>
-    </linearGradient>
+    <clipPath id="garagePhotoClip">
+      <rect x="742" y="112" width="436" height="343" rx="8"/>
+    </clipPath>
     <pattern id="hatch" width="16" height="16" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
       <line x1="0" y1="0" x2="0" y2="16" stroke="#3a6" stroke-width="3"/>
     </pattern>
@@ -184,36 +187,35 @@ text { font-family: "ArchivoN"; fill: var(--text); font-variant-numeric: tabular
   </g>
 
   <!-- inner panel: the hexagon's slope, taller -->
-  <polygon points="773,52 1147,52 1310,318 1147,584 773,584 610,318" fill="url(#coreFill)" stroke="var(--line)" stroke-opacity=".6" stroke-width="1.5"/>
-  <!-- Decorul generat extinde fotografia originala; masinile si garajul
-       sunt pastrate din sursa si raman in interiorul mastii hexagonale. -->
-  <g id="garageScene" clip-path="url(#coreClip)">
-    <image x="610" y="52" width="700" height="532" preserveAspectRatio="xMidYMid meet"
-           href="assets/garage-full-hex.jpg"/>
-    <rect x="610" y="410" width="700" height="174" fill="url(#garageBottomFade)"/>
-    <image x="921" y="460" width="78" height="59" preserveAspectRatio="xMidYMid meet"
+  <polygon points="773,52 1147,52 1310,318 1147,584 773,584 610,318" fill="url(#garageFill)" stroke="var(--line)" stroke-opacity=".6" stroke-width="1.5"/>
+  <!-- Fotografia completa sta intr-o rama proprie, in interiorul hexagonului. -->
+  <g id="garageScene">
+    <rect x="739" y="109" width="442" height="349" rx="12"
+          fill="#130d21" stroke="url(#footerAccent)" stroke-width="2"/>
+    <image x="742" y="112" width="436" height="343"
+           preserveAspectRatio="xMidYMid meet"
+           clip-path="url(#garagePhotoClip)" href="assets/eumijloc.jpg"/>
+    <image x="921" y="460" width="78" height="55" preserveAspectRatio="xMidYMid meet"
            href="assets/gtalogo-cutout.png"/>
   </g>
   <polygon points="773,52 1147,52 1310,318 1147,584 773,584 610,318"
            fill="none" stroke="url(#footerAccent)" stroke-width="2" stroke-opacity=".75"/>
-  <text class="micro" x="960" y="95" text-anchor="middle" style="fill:var(--ice)">VICE CITY / GARAGE</text>
   <rect x="777" y="519" width="366" height="61" rx="11" fill="#080512" opacity=".94"
         stroke="url(#footerAccent)" stroke-opacity=".75" stroke-width="1.5"/>
   <text class="lab" x="796" y="556" style="fill:var(--pink)">WANTED</text>
 
-  <!-- The photo's logo is already placed at its bottom edge. -->
-  <rect x="831" y="146" width="258" height="90" rx="11"
-        fill="#080512" opacity=".9" stroke="url(#footerAccent)" stroke-opacity=".65" stroke-width="1.2"/>
-  <text class="micro" x="960" y="169" text-anchor="middle" style="fill:var(--ice)">ENGINE POWER</text>
-  <text x="960" y="203" text-anchor="middle">
+  <rect x="831" y="64" width="258" height="120" rx="11"
+        fill="#080512" opacity=".98" stroke="url(#footerAccent)" stroke-opacity=".65" stroke-width="1.2"/>
+  <text class="micro" x="960" y="91" text-anchor="middle" style="fill:var(--ice)">ENGINE POWER</text>
+  <text x="960" y="128" text-anchor="middle">
     <tspan id="mEng" class="val hid">291</tspan><tspan class="unit" dx="6">hp</tspan>
   </text>
-  <rect x="852" y="211" width="216" height="4" rx="2" fill="var(--track)"/>
+  <rect x="852" y="143" width="216" height="4" rx="2" fill="var(--track)"/>
   <g data-leds="powerBar" data-count="64" data-light="3 5"
      data-c0="C.ice" data-off="C.none" data-lit="round(clamp(eng / P.engMaxHp) * 64)">
-    <rect x="852" y="211" width="216" height="4" fill="none"/>
+    <rect x="852" y="143" width="216" height="4" fill="none"/>
   </g>
-  <text class="val" x="820" y="203" data-text="val156" data-width="280" data-rate="10" data-glyphs="−"
+  <text class="val" x="820" y="128" data-text="val156" data-width="280" data-rate="10" data-glyphs="−"
         data-text-expr="fmt(max(0, eng))">291</text>
   <text class="wanted-stars" x="922" y="555" data-text="wantedStars" data-width="125" data-cells="5"
         data-null="" data-show="wanted > 0" data-color="C.pale"

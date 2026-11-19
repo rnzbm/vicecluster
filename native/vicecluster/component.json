@@ -1,7 +1,7 @@
 {
   "id": "vicecluster",
   "kind": "tool",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "license": "GPL-3.0-or-later",
   "title": "ViceCluster",
   "description": "EXPERIMENTAL. Whole-cluster themes drawn over the instrument cluster through cluster-render's panel target, under the car's own warning lights: ten families (G20 inspired 1 and 2, LCI inspired 1 and 2, Three-dial 1 and 2, Performance 1 and 2: each a Sport and a Comfort theme switched by the drive mode; GTA VI Bucharest and GTA VI Garage in Sport). Drawn by small shaders on the cluster with textures sent once (about 1.7-4.6 MB at start), so only a few KB/s of numbers cross the link while driving. Readings the car does not give show as --. Chosen on the central screen by touch, with a preview of each theme and a 10 s try on the cluster while parked (the ViceCluster iDrive app).",
@@ -24,6 +24,16 @@
     }
   },
   "files": [
+    {
+      "path": "vice_picker_client.js",
+      "from": "src/vice_picker_client.js",
+      "mode": "0644"
+    },
+    {
+      "path": "LICENSE.mgu-renderd",
+      "from": "LICENSE.mgu-renderd",
+      "mode": "0644"
+    },
     {
       "path": "server.js",
       "from": "src/server.js",
